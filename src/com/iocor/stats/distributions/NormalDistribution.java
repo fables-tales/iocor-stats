@@ -24,7 +24,6 @@ public class NormalDistribution implements IContinuousProbabilityDistribution {
 		this.mu = 0.0;
 		this.sigma = 1.0;
 		this.InstanceConstant = NormalDistributionPDFConstant;
-
 	}
 
 	/**
@@ -39,7 +38,7 @@ public class NormalDistribution implements IContinuousProbabilityDistribution {
 	 *             thrown when Sigma <= 0.0
 	 */
 	public NormalDistribution(double Mu, double Sigma)
-			throws IllegalArgumentException {
+	throws IllegalArgumentException {
 		if (Sigma > 0) {
 			this.mu = Mu;
 			this.sigma = Sigma;
