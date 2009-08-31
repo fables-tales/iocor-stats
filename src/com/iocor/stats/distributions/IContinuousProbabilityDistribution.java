@@ -6,8 +6,7 @@ package com.iocor.stats.distributions;
  * @author Sam Phippen (samphippen@gmail.com)
  * 
  */
-public interface IContinuousProbabilityDistribution extends
-		IProbabilityDistribution {
+public interface IContinuousProbabilityDistribution extends IProbabilityDistribution {
 
 	/**
 	 * the Probability Density Funcion of the distribution
@@ -23,6 +22,5 @@ public interface IContinuousProbabilityDistribution extends
 	 * @return the cumulative probability at x
 	 */
 	public double CDF(double x);
-	
-	
+
 }

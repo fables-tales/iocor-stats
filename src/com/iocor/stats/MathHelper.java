@@ -19,4 +19,21 @@ public class MathHelper {
 		float tmp = Math.round(d);
 		return (float) tmp / p;
 	}
+
+	public static int Factorial(int x) {
+		if (x == 0) {
+			return 1;
+		} else {
+			int mul = 2;
+			for (int i = 3; i <= x; i++) {
+				mul *= i;
+			}
+			return mul;
+		}
+
+	}
+
+	public static double Exp(double d) {
+		return Math.pow(Math.E, d);
+	}
 }
