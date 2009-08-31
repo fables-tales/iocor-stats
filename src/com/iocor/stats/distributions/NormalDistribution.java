@@ -2,7 +2,7 @@ package com.iocor.stats.distributions;
 
 import com.iocor.stats.MathHelper;
 
-public class NormalDistribution implements ContinuousProbabilityDistribution {
+public class NormalDistribution implements IContinuousProbabilityDistribution {
 	/**
 	 * the value used for the PDF at the beginning
 	 */
@@ -54,7 +54,11 @@ public class NormalDistribution implements ContinuousProbabilityDistribution {
 
 	@Override
 	public double CDF(double x) {
-		return 0;
+		double value = 0;
+		for (double i = -1000 * this.sigma; i <= x; i += 0.01 * this.sigma) {
+			value += this.PDF(i);
+		}
+		return value;
 	}
 
 	@Override
