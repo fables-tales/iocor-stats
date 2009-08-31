@@ -1,7 +1,5 @@
 package com.iocor.stats.distributions;
 
-import javax.annotation.processing.RoundEnvironment;
-
 import com.iocor.stats.MathHelper;
 
 public class NormalDistribution implements IContinuousProbabilityDistribution {
