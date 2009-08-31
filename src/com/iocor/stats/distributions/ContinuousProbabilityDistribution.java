@@ -4,10 +4,11 @@ package com.iocor.stats.distributions;
  * information for a Continuous Probability Distribution
  * 
  * @author Sam Phippen (samphippen@gmail.com)
- *
+ * 
  */
-public interface ContinuousProbabilityDistribution extends ProbabilityDistribution {
-	
+public interface ContinuousProbabilityDistribution extends
+		ProbabilityDistribution {
+
 	/**
 	 * the Probability Density Funcion of the distribution
 	 * 
@@ -15,12 +16,12 @@ public interface ContinuousProbabilityDistribution extends ProbabilityDistributi
 	 * @return probability density at value x
 	 */
 	public double PDF(double x);
-	
+
 	/**
 	 * 
 	 * @param x
 	 * @return the cumulative probability at x
 	 */
 	public double CDF(double x);
-	
+
 }
