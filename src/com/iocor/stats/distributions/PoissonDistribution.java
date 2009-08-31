@@ -8,7 +8,7 @@ public class PoissonDistribution implements IDiscreteProbabilityDistribution {
 	private double lambda;
 
 	public PoissonDistribution(double Lambda) throws IllegalArgumentException {
-		if (lambda <= 0 && !Double.isNaN(Lambda)) {
+		if (Lambda > 0 && !Double.isNaN(Lambda)) {
 			this.lambda = Lambda;
 		} else {
 			throw new IllegalArgumentException("lambda must be greater than zero");
