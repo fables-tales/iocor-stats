@@ -1,13 +1,16 @@
 package com.iocor.stats.distributions;
 
+import javax.annotation.processing.RoundEnvironment;
+
 import com.iocor.stats.MathHelper;
 
 public class NormalDistribution implements IContinuousProbabilityDistribution {
 	/**
 	 * the value used for the PDF at the beginning
 	 */
-	private static final double NormalDistributionPDFConstant = 1.0 / (MathHelper
-			.SquareRoot(2.0 * Math.PI));
+
+	//private static final double NormalDistributionPDFConstant = 1.0 / (MathHelper.SquareRoot(2.0 * Math.PI));
+	private static final double NormalDistributionPDFConstant = 0.39894228040143267793994605;
 
 	private double mu;
 	private double sigma;
@@ -20,6 +23,7 @@ public class NormalDistribution implements IContinuousProbabilityDistribution {
 	public NormalDistribution() {
 		this.mu = 0.0;
 		this.sigma = 1.0;
+		this.InstanceConstant = NormalDistributionPDFConstant;
 
 	}
 
@@ -55,10 +59,14 @@ public class NormalDistribution implements IContinuousProbabilityDistribution {
 	@Override
 	public double CDF(double x) {
 		double value = 0;
-		for (double i = -1000 * this.sigma; i <= x; i += 0.01 * this.sigma) {
-			value += this.PDF(i);
+		double last = 0;
+		double trapeziumWidth = 0.05*this.sigma;
+		for (double i = -1000 * this.sigma; i < x; i += trapeziumWidth) {
+			double pdf = this.InnerCalculation(i);
+			value += MathHelper.TrapeziumArea(trapeziumWidth,last,pdf);
+			last = pdf;
 		}
-		return value;
+		return MathHelper.Round(value*this.InstanceConstant,5);
 	}
 
 	@Override
@@ -73,22 +81,22 @@ public class NormalDistribution implements IContinuousProbabilityDistribution {
 
 	@Override
 	public double Median() {
-		return 0;
+		return this.mu;
 	}
 
 	@Override
 	public double Mode() {
-		return 0;
+		return this.mu;
 	}
 
 	@Override
 	public double StandardDeviation() {
-		return 0;
+		return this.sigma;
 	}
 
 	@Override
 	public double Variance() {
-		return 0;
+		return MathHelper.Square(this.sigma);
 	}
 
 }
