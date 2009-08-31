@@ -6,10 +6,12 @@ import com.iocor.stats.MathHelper;
 
 public class PoissonDistribution implements IDiscreteProbabilityDistribution {
 	private double lambda;
+	private double instanceConstant;
 
 	public PoissonDistribution(double Lambda) throws IllegalArgumentException {
 		if (Lambda > 0 && !Double.isNaN(Lambda)) {
 			this.lambda = Lambda;
+			this.instanceConstant = MathHelper.Exp(-this.lambda);
 		} else {
 			throw new IllegalArgumentException("lambda must be greater than zero");
 		}
@@ -26,7 +28,7 @@ public class PoissonDistribution implements IDiscreteProbabilityDistribution {
 
 	@Override
 	public double PMF(int x) {
-		return MathHelper.Exp(-this.lambda) * Math.pow(this.lambda, x) / MathHelper.Factorial(x);
+		return this.instanceConstant * Math.pow(this.lambda, x) / MathHelper.Factorial(x);
 	}
 
 	@Override
