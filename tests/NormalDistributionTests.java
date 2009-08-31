@@ -1,5 +1,6 @@
 import org.junit.Test;
 
+import com.iocor.stats.MathHelper;
 import com.iocor.stats.distributions.NormalDistribution;
 
 import junit.framework.Assert;
@@ -25,5 +26,12 @@ public class NormalDistributionTests extends TestCase {
 		Assert.assertEquals(0.0, d3.Median());
 		Assert.assertEquals(2.0, d3.StandardDeviation());
 		Assert.assertEquals(4.0, d3.Variance());
+	}
+
+	public void testCDF() {
+		NormalDistribution d1 = new NormalDistribution();
+		Assert.assertEquals(0.5, Double.valueOf(MathHelper.Round(d1.CDF(0),5)));
+		//hax, no idea why this is necessary
+		Assert.assertEquals(MathHelper.Round(0.68269, 5), MathHelper.Round(d1.CDF(1) - d1.CDF(-1),5));
 	}
 }

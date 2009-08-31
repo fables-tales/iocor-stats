@@ -8,8 +8,8 @@ public class NormalDistribution implements IContinuousProbabilityDistribution {
 	/**
 	 * the value used for the PDF at the beginning
 	 */
-
-	//private static final double NormalDistributionPDFConstant = 1.0 / (MathHelper.SquareRoot(2.0 * Math.PI));
+	// private static final double NormalDistributionPDFConstant = 1.0 /
+	// (MathHelper.SquareRoot(2.0 * Math.PI));
 	private static final double NormalDistributionPDFConstant = 0.39894228040143267793994605;
 
 	private double mu;
@@ -60,13 +60,13 @@ public class NormalDistribution implements IContinuousProbabilityDistribution {
 	public double CDF(double x) {
 		double value = 0;
 		double last = 0;
-		double trapeziumWidth = 0.005*this.sigma;
+		double trapeziumWidth = 0.005 * this.sigma;
 		for (double i = -1000 * this.sigma; i < x; i += trapeziumWidth) {
 			double pdf = this.InnerCalculation(i);
-			value += MathHelper.TrapeziumArea(trapeziumWidth,last,pdf);
+			value += MathHelper.TrapeziumArea(trapeziumWidth, last, pdf);
 			last = pdf;
 		}
-		return value*this.InstanceConstant;
+		return value * this.InstanceConstant;
 	}
 
 	@Override
