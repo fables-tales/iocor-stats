@@ -21,7 +21,7 @@ public class MathHelper {
 	}
 
 	public static int Factorial(int x) {
-		if (x == 0) {
+		if (x == 0 || x == 1) {
 			return 1;
 		} else {
 			int mul = 2;

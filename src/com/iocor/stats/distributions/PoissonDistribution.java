@@ -7,8 +7,12 @@ import com.iocor.stats.MathHelper;
 public class PoissonDistribution implements IDiscreteProbabilityDistribution {
 	private double lambda;
 
-	public PoissonDistribution(double Lambda) {
-		this.lambda = Lambda;
+	public PoissonDistribution(double Lambda) throws IllegalArgumentException {
+		if (lambda <= 0 && !Double.isNaN(Lambda)) {
+			this.lambda = Lambda;
+		} else {
+			throw new IllegalArgumentException("lambda must be greater than zero");
+		}
 	}
 
 	@Override
