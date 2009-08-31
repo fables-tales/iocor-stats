@@ -35,21 +35,18 @@ public class NormalDistribution implements IContinuousProbabilityDistribution {
 	 * @throws IllegalArgumentException
 	 *             thrown when Sigma <= 0.0
 	 */
-	public NormalDistribution(double Mu, double Sigma)
-	throws IllegalArgumentException {
+	public NormalDistribution(double Mu, double Sigma) throws IllegalArgumentException {
 		if (Sigma > 0) {
 			this.mu = Mu;
 			this.sigma = Sigma;
 			this.InstanceConstant = NormalDistributionPDFConstant / this.sigma;
 		} else {
-			throw new IllegalArgumentException(
-					"Standard deviation must be greater than zero");
+			throw new IllegalArgumentException("Standard deviation must be greater than zero");
 		}
 	}
 
 	private double InnerCalculation(double x) {
-		double Exponent = (-MathHelper.Square(x - this.mu))
-				/ (2 * MathHelper.Square(this.sigma));
+		double Exponent = (-MathHelper.Square(x - this.mu)) / (2 * MathHelper.Square(this.sigma));
 		return Math.pow(Math.E, Exponent);
 	}
 

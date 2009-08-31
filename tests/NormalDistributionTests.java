@@ -30,8 +30,8 @@ public class NormalDistributionTests extends TestCase {
 
 	public void testCDF() {
 		NormalDistribution d1 = new NormalDistribution();
-		Assert.assertEquals(0.5, Double.valueOf(MathHelper.Round(d1.CDF(0),5)));
-		//hax, no idea why this is necessary
-		Assert.assertEquals(MathHelper.Round(0.68269, 5), MathHelper.Round(d1.CDF(1) - d1.CDF(-1),5));
+		Assert.assertEquals(0.5, Double.valueOf(MathHelper.Round(d1.CDF(0), 5)));
+		// hax, no idea why this is necessary
+		Assert.assertEquals(MathHelper.Round(0.68269, 5), MathHelper.Round(d1.CDF(1) - d1.CDF(-1), 5));
 	}
 }
