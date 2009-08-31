@@ -1,5 +1,3 @@
-import org.junit.Test;
-
 import com.iocor.stats.MathHelper;
 import com.iocor.stats.distributions.NormalDistribution;
 
@@ -15,6 +13,7 @@ public class NormalDistributionTests extends TestCase {
 		Assert.assertEquals(1.0, d1.StandardDeviation());
 		Assert.assertEquals(1.0, d1.Variance());
 		try {
+			@SuppressWarnings("unused")
 			NormalDistribution d2 = new NormalDistribution(0.0, -1.0);
 			fail("setting a negative standard devation did not cause an exception");
 		} catch (IllegalArgumentException IAE) {
@@ -30,8 +29,12 @@ public class NormalDistributionTests extends TestCase {
 
 	public void testCDF() {
 		NormalDistribution d1 = new NormalDistribution();
-		Assert.assertEquals(0.5, Double.valueOf(MathHelper.Round(d1.CDF(0), 5)));
+		Assert
+				.assertEquals(0.5, Double.valueOf(MathHelper
+						.Round(d1.CDF(0), 5)));
 		// hax, no idea why this is necessary
-		Assert.assertEquals(MathHelper.Round(0.68269, 5), MathHelper.Round(d1.CDF(1) - d1.CDF(-1), 5));
+		Assert.assertEquals(MathHelper.Round(0.68269, 5), MathHelper.Round(d1
+				.CDF(1)
+				- d1.CDF(-1), 5));
 	}
 }

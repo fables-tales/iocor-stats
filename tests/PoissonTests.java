@@ -16,6 +16,7 @@ public class PoissonTests extends TestCase {
 		Assert.assertEquals(1.0, p1.Mean());
 		Assert.assertEquals(1.0, p1.Variance());
 		try{
+			@SuppressWarnings("unused")
 			PoissonDistribution p2 = new PoissonDistribution(0);
 			fail("construction of a poisson distribution with a passed did not fail");
 		} catch (IllegalArgumentException iae){
