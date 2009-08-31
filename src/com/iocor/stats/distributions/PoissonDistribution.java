@@ -4,6 +4,10 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import com.iocor.stats.MathHelper;
 
+/**
+ * @author Sam Phippen (samphippen@gmail.com)
+ * 
+ */
 public class PoissonDistribution implements IDiscreteProbabilityDistribution {
 	private double lambda;
 	private double instanceConstant;

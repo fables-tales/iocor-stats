@@ -2,6 +2,11 @@ package com.iocor.stats.distributions;
 
 import com.iocor.stats.MathHelper;
 
+/**
+ * 
+ * @author Sam Phippen (samphippen@gmail.com)
+ *
+ */
 public class NormalDistribution implements IContinuousProbabilityDistribution {
 	/**
 	 * the value used for the PDF at the beginning
