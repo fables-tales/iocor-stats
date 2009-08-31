@@ -1,6 +1,8 @@
 package com.iocor.stats.samples;
 
 import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.HashMap;
 
 import com.iocor.stats.MathHelper;
 
@@ -18,7 +20,7 @@ public class UnivariateSample {
 	private boolean sumOfSquaresUpdateNeeded = false;
 
 	public UnivariateSample() {
-
+		this.data = new ArrayList<Double>();
 	}
 
 	public void AddItem(double value) {
@@ -67,7 +69,31 @@ public class UnivariateSample {
 	}
 
 	public double Mode() {
-		throw new NotImplementedException();
+		HashMap<Double, Integer> values = new HashMap<Double, Integer>();
+		int greatest = 0;
+		for (int i = 0; i < this.data.size(); i++) {
+			double key = this.data.get(i);
+			int value = 0;
+			if (values.containsKey(key)) {
+				value = values.get(key) + 1;
+				if (value > greatest) {
+					greatest = value;
+				}
+			} else {
+				value = 1;
+			}
+			values.put(key, value);
+		}
+		double mode = 0;
+		for (int i = 0; i < this.data.size(); i++) {
+			double key = this.data.get(i);
+			double value = values.get(key);
+			if (value == greatest) {
+				mode = value;
+				break;
+			}
+		}
+		return mode;
 	}
 
 	public double Variance() {
