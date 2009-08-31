@@ -1,7 +1,6 @@
 package com.iocor.stats.samples;
 
 import java.util.ArrayList;
-import java.util.Dictionary;
 import java.util.HashMap;
 
 import com.iocor.stats.MathHelper;
