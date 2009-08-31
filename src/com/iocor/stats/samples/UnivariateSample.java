@@ -80,6 +80,7 @@ public class UnivariateSample {
 		}
 		if (this.standardDeviationUpdateNeeded) {
 			this.standardDeviation = (this.sumOfSquares - (this.data.size() * MathHelper.Square(this.Mean()))) / (this.data.size() - 1);
+			this.standardDeviation = MathHelper.SquareRoot(this.standardDeviation);
 			this.standardDeviationUpdateNeeded = false;
 		}
 		return this.standardDeviation;

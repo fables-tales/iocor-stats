@@ -5,7 +5,7 @@ import com.iocor.stats.MathHelper;
 /**
  * 
  * @author Sam Phippen (samphippen@gmail.com)
- *
+ * 
  */
 public class NormalDistribution implements IContinuousProbabilityDistribution {
 	/**

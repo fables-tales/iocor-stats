@@ -15,9 +15,9 @@ public class PoissonDistribution implements IDiscreteProbabilityDistribution {
 	/**
 	 * 
 	 * @param Lambda
-	 * 		the mean and variance of the distribution
+	 *            the mean and variance of the distribution
 	 * @throws IllegalArgumentException
-	 * 		thrown when lambda <= 0 or is not a number
+	 *             thrown when lambda <= 0 or is not a number
 	 */
 	public PoissonDistribution(double Lambda) throws IllegalArgumentException {
 		if (Lambda > 0 && !Double.isNaN(Lambda)) {
