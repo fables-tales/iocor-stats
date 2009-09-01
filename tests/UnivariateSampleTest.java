@@ -37,6 +37,16 @@ public class UnivariateSampleTest extends TestCase {
 		us = new UnivariateSample();
 		us.AddItem(1.0);
 		assertEquals(Double.NaN, us.StandardDeviation());
-		
+
+	}
+
+	public void testSum() {
+		UnivariateSample us = new UnivariateSample();
+		us.AddItem(1.0);
+		assertEquals(1.0, us.Sum());
+		us.AddItem(-1.5);
+		assertEquals(-0.5, us.Sum());
+		us.AddItem(5.1);
+		assertEquals(4.6, us.Sum());
 	}
 }

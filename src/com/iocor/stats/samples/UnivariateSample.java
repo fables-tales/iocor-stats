@@ -96,7 +96,7 @@ public class UnivariateSample {
 	}
 
 	public double Variance() {
-		return this.StandardDeviation()*this.standardDeviation;
+		return this.StandardDeviation() * this.standardDeviation;
 	}
 
 	public double StandardDeviation() {
@@ -109,6 +109,20 @@ public class UnivariateSample {
 			this.standardDeviationUpdateNeeded = false;
 		}
 		return this.standardDeviation;
+	}
+
+	public double Sum() {
+		if (this.sumUpdateNeeded) {
+			this.UpdateSum();
+		}
+		return this.sum;
+	}
+
+	public double SumOfSquares() {
+		if (this.sumOfSquaresUpdateNeeded) {
+			this.UpdateSumOfSquares();
+		}
+		return this.sumOfSquares;
 	}
 
 	public ArrayList<Double> getData() {
