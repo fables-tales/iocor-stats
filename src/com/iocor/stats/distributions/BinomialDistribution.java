@@ -1,20 +1,16 @@
 package com.iocor.stats.distributions;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import com.iocor.stats.MathHelper;
 
 public class BinomialDistribution implements IDiscreteProbabilityDistribution {
 
 	private int n; // no. of trials
 	private double p; // chance of success
-	private double instanceConstant;
 
 	public BinomialDistribution(int N, double P) throws IllegalArgumentException {
 		if (N > 0 && P < 1.0 && P > 0.0) {
 			this.n = N;
 			this.p = P;
-			this.instanceConstant = 0.0; // for now...
 		} else {
 			throw new IllegalArgumentException("n must be greater than zero; p must satisfy 0 < p < 1");
 		}
