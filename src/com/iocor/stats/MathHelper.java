@@ -1,10 +1,24 @@
 package com.iocor.stats;
 
 public class MathHelper {
+	/**
+	 * calculate the square root of a number
+	 * 
+	 * @param x
+	 *            the number to have it's square root calculated
+	 * @return square root of x
+	 */
 	public static double SquareRoot(double x) {
 		return Math.pow(x, 0.5);
 	}
 
+	/**
+	 * calculate the square of a number
+	 * 
+	 * @param x
+	 *            the number to be squared
+	 * @return x squared
+	 */
 	public static double Square(double x) {
 		return Math.pow(x, 2);
 	}
@@ -24,6 +38,15 @@ public class MathHelper {
 		return (0.5 * width * (a + b));
 	}
 
+	/**
+	 * rounds a number to RPL places
+	 * 
+	 * @param d
+	 *            the double to be rounded
+	 * @param Rpl
+	 *            the number of places to round to
+	 * @return the rounded double
+	 */
 	public static float Round(double d, int Rpl) {
 		float p = (float) Math.pow(10, Rpl);
 		d = d * p;
@@ -31,19 +54,35 @@ public class MathHelper {
 		return (float) tmp / p;
 	}
 
-	public static int Factorial(int x) {
+	/**
+	 * returns the factorial of a number
+	 * 
+	 * @param x
+	 *            the number to have it's factorial calculated
+	 * @return x factorial
+	 * @throws IllegalArgumentException
+	 */
+	public static int Factorial(int x) throws IllegalArgumentException {
 		if (x == 0 || x == 1) {
 			return 1;
-		} else {
+		} else if (x > 0) {
 			int mul = 2;
 			for (int i = 3; i <= x; i++) {
 				mul *= i;
 			}
 			return mul;
+		} else {
+			throw new IllegalArgumentException("cannot calculate the factorial of a negative number");
 		}
 
 	}
 
+	/**
+	 * raises a number to the power e
+	 * 
+	 * @param d
+	 * @return e^d
+	 */
 	public static double Exp(double d) {
 		return Math.pow(Math.E, d);
 	}
