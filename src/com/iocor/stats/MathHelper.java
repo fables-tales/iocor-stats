@@ -9,6 +9,17 @@ public class MathHelper {
 		return Math.pow(x, 2);
 	}
 
+	/**
+	 * calculates the area of a trapezium
+	 * 
+	 * @param width
+	 *            the width accross the trapezium
+	 * @param a
+	 *            side length of side a
+	 * @param b
+	 *            side length of side b
+	 * @return the area of the trapezium
+	 */
 	public static double TrapeziumArea(double width, double a, double b) {
 		return (0.5 * width * (a + b));
 	}

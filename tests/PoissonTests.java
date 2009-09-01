@@ -22,6 +22,9 @@ public class PoissonTests extends TestCase {
 		} catch (IllegalArgumentException iae) {
 
 		}
+		p1 = new PoissonDistribution(3);
+		assertEquals(3.0, p1.Variance());
+		assertEquals(MathHelper.SquareRoot(3.0),p1.StandardDeviation());
 
 	}
 
@@ -36,4 +39,6 @@ public class PoissonTests extends TestCase {
 		RoundedAssertEquals(0.0336897349954273, p2.PMF(1), PLACES);
 		RoundedAssertEquals(0.0842243374885683, p2.PMF(2), PLACES);
 	}
+	
+	
 }

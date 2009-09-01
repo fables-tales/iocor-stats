@@ -32,6 +32,7 @@ public class UnivariateSampleTest extends TestCase {
 		us.AddItem(1.0);
 		us.AddItem(2.0);
 		assertEquals(MathHelper.SquareRoot(2.0) / 2, us.StandardDeviation());
+		assertEquals(MathHelper.Round(0.5,5), MathHelper.Round(us.Variance(),5));
 		us.AddItem(3.0);
 		assertEquals(1.0, us.StandardDeviation());
 		us = new UnivariateSample();
@@ -48,5 +49,14 @@ public class UnivariateSampleTest extends TestCase {
 		assertEquals(-0.5, us.Sum());
 		us.AddItem(5.1);
 		assertEquals(4.6, us.Sum());
+	}
+	
+	public void testSumOfSquares(){
+		UnivariateSample us = new UnivariateSample();
+		us.AddItem(1.0);
+		us.AddItem(3.0);
+		assertEquals(10.0,us.SumOfSquares());
+		us.AddItem(-1.5);
+		assertEquals(12.25,us.SumOfSquares());
 	}
 }
