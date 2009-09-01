@@ -1,5 +1,9 @@
 package com.iocor.stats;
 
+/**
+ * @author seb
+ *
+ */
 public class MathHelper {
 	/**
 	 * calculate the square root of a number
@@ -86,4 +90,17 @@ public class MathHelper {
 	public static double Exp(double d) {
 		return Math.pow(Math.E, d);
 	}
+	
+	/**
+	 * works out binomial coefficient
+	 * 
+	 * @param n
+	 * @param r
+	 * @return nCr
+	 */
+	public static double nCr(int n, int r) {
+		
+		return Factorial(n) / (Factorial(r) * Factorial(n - r));
+	}
+	
 }
