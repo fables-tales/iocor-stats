@@ -4,7 +4,7 @@ import junit.framework.TestSuite;
 public class StatsTests {
 
 	public static Test suite() {
-		TestSuite suite = new TestSuite("Test for default package");
+		TestSuite suite = new TestSuite("Test for iocor-stats");
 		// $JUnit-BEGIN$
 		suite.addTestSuite(NormalDistributionTests.class);
 		suite.addTestSuite(PoissonTests.class);
