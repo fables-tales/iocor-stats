@@ -52,7 +52,7 @@ public class NormalDistribution implements IContinuousProbabilityDistribution {
 
 	private double InnerCalculation(double x) {
 		double Exponent = (-MathHelper.Square(x - this.mu)) / (2 * MathHelper.Square(this.sigma));
-		return Math.pow(Math.E, Exponent);
+		return MathHelper.Exp(Exponent);
 	}
 
 	@Override
