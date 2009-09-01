@@ -90,7 +90,7 @@ public class MathHelper {
 	public static double Exp(double d) {
 		return Math.pow(Math.E, d);
 	}
-	
+
 	/**
 	 * works out binomial coefficient
 	 * 
@@ -99,8 +99,8 @@ public class MathHelper {
 	 * @return nCr
 	 */
 	public static double nCr(int n, int r) {
-		
+
 		return Factorial(n) / (Factorial(r) * Factorial(n - r));
 	}
-	
+
 }

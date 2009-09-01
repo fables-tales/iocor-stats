@@ -1,6 +1,5 @@
 import com.iocor.stats.MathHelper;
 import com.iocor.stats.distributions.BinomialDistribution;
-import com.iocor.stats.distributions.PoissonDistribution;
 
 import junit.framework.Assert;
 import junit.framework.TestCase;
@@ -13,31 +12,8 @@ public class BinomialDistributionTests extends TestCase {
 	}
 
 	public void testConstructor() {
-		BinomialDistribution b1 = new BinomialDistribution(3,0.5);
+		BinomialDistribution b1 = new BinomialDistribution(3, 0.5);
 		Assert.assertEquals(1.5, b1.Mean());
-		Assert.assertEquals(0.75, b1.Variance());/*
-		try {
-			@SuppressWarnings("unused")
-			BinomialDistribution p2 = new BinomialDistribution(0);
-			fail("construction of a poisson distribution with a passed did not fail");
-		} catch (IllegalArgumentException iae) {
-
-		}
-		p1 = new PoissonDistribution(3);
-		assertEquals(3.0, p1.Variance());
-		assertEquals(MathHelper.SquareRoot(3.0),p1.StandardDeviation());
-*/
+		Assert.assertEquals(0.75, b1.Variance());
 	}
-/*
-	public void testPMF() {
-		PoissonDistribution p1 = new PoissonDistribution(2);
-		RoundedAssertEquals(0.13533528323661269189, p1.PMF(0), PLACES);
-		RoundedAssertEquals(0.27067056647322538378, p1.PMF(1), PLACES);
-		RoundedAssertEquals(0.27067056647322538378, p1.PMF(2), PLACES);
-		RoundedAssertEquals(0.18044704431548358919, p1.PMF(3), PLACES);
-		PoissonDistribution p2 = new PoissonDistribution(5);
-		RoundedAssertEquals(0.0067379469990854, p2.PMF(0), PLACES);
-		RoundedAssertEquals(0.0336897349954273, p2.PMF(1), PLACES);
-		RoundedAssertEquals(0.0842243374885683, p2.PMF(2), PLACES);
-	}*/
 }
