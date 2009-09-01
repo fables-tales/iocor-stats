@@ -5,6 +5,8 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import com.iocor.stats.MathHelper;
 
 /**
+ * implements the poisson distribution
+ * 
  * @author Sam Phippen (samphippen@gmail.com)
  * 
  */
@@ -38,8 +40,8 @@ public class PoissonDistribution implements IDiscreteProbabilityDistribution {
 	}
 
 	@Override
-	/**
-	 * x must be greater than zero for this function
+	/*
+	 * * x must be greater than zero for this function
 	 */
 	public double PMF(int x) {
 		return this.instanceConstant * Math.pow(this.lambda, x) / MathHelper.Factorial(x);

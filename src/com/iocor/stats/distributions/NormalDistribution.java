@@ -3,6 +3,7 @@ package com.iocor.stats.distributions;
 import com.iocor.stats.MathHelper;
 
 /**
+ * implements the normal distribution
  * 
  * @author Sam Phippen (samphippen@gmail.com)
  * 

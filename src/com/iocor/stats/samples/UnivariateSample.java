@@ -7,6 +7,12 @@ import com.iocor.stats.MathHelper;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+/**
+ * impliments a univariate sample of continuous data
+ * 
+ * @author Sam Phippen (samphippen@gmail.com)
+ *
+ */
 public class UnivariateSample {
 	private ArrayList<Double> data;
 	private double sum;
