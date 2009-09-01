@@ -60,7 +60,7 @@ public class NormalDistribution implements IContinuousProbabilityDistribution {
 		double value = 0;
 		double last = 0;
 		double trapeziumWidth = 0.005 * this.sigma;
-		for (double i = -1000 * this.sigma; i < x; i += trapeziumWidth) {
+		for (double i = -100 * this.sigma; i < x; i += trapeziumWidth) {
 			double pdf = this.InnerCalculation(i);
 			value += MathHelper.TrapeziumArea(trapeziumWidth, last, pdf);
 			last = pdf;
