@@ -2,7 +2,7 @@ package com.iocor.stats;
 
 /**
  * @author seb
- *
+ * @author Sam Phippen (samphippen@gmail.com)
  */
 public class MathHelper {
 	/**
