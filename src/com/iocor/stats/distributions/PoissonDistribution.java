@@ -38,6 +38,9 @@ public class PoissonDistribution implements IDiscreteProbabilityDistribution {
 	}
 
 	@Override
+	/**
+	 * x must be greater than zero for this function
+	 */
 	public double PMF(int x) {
 		return this.instanceConstant * Math.pow(this.lambda, x) / MathHelper.Factorial(x);
 	}
