@@ -96,7 +96,7 @@ public class UnivariateSample {
 	}
 
 	public double Variance() {
-		return this.StandardDeviation();
+		return this.StandardDeviation()*this.standardDeviation;
 	}
 
 	public double StandardDeviation() {
