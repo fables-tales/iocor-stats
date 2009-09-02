@@ -76,7 +76,8 @@ public class MathHelper {
 			}
 			return mul;
 		} else {
-			throw new IllegalArgumentException("cannot calculate the factorial of a negative number");
+			throw new IllegalArgumentException(
+					"cannot calculate the factorial of a negative number");
 		}
 
 	}
@@ -101,6 +102,28 @@ public class MathHelper {
 	public static double nCr(int n, int r) {
 
 		return Factorial(n) / (Factorial(r) * Factorial(n - r));
+	}
+
+	/**
+	 * works out error function
+	 * 
+	 * @param z
+	 * @return erf(z)
+	 */
+	public static double erf(double z) {
+		double sum = 0.0, prod = 1.0;
+		int iterations = 100;
+
+		for(int n = 0; n < iterations; n++){
+			for(int k = 1; k <= n; k++){
+				prod *= (-1) * Square(z) / k;
+			}
+			sum += (z / (2 * n + 1)) * prod;
+			prod = 1.0;
+			
+		}
+		
+		return sum;
 	}
 
 }
