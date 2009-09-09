@@ -36,6 +36,12 @@ public class UnivariateSample {
 		this.sumOfSquares = new CachedValue<Double>(Double.NaN);
 	}
 
+	/**
+	 * Adds an item to the univariate data set
+	 * 
+	 * @param value
+	 *            the items value
+	 */
 	public void AddItem(double value) {
 		data.add(value);
 		this.Reset();
@@ -64,6 +70,11 @@ public class UnivariateSample {
 		this.sumOfSquares.SetValue(sumsquares);
 	}
 
+	/**
+	 * gets the mean of the univariate sample
+	 * 
+	 * @return the mean of the sample
+	 */
 	public double Mean() {
 		if (this.sum.GetUpdateNeeded()) {
 			this.UpdateSum();
@@ -74,10 +85,20 @@ public class UnivariateSample {
 		return this.mean.GetValue();
 	}
 
+	/**
+	 * gets the median of the univariate sample
+	 * 
+	 * @return the median of the sample
+	 */
 	public double Median() {
 		throw new NotImplementedException();
 	}
 
+	/**
+	 * gets the mode of the univariate sample
+	 * 
+	 * @return the mode of the sample
+	 */
 	public double Mode() {
 		HashMap<Double, Integer> values = new HashMap<Double, Integer>();
 		int greatest = 0;
@@ -106,10 +127,20 @@ public class UnivariateSample {
 		return mode;
 	}
 
+	/**
+	 * gets the variance of the univariate sample
+	 * 
+	 * @return the variance
+	 */
 	public double Variance() {
 		return this.StandardDeviation() * this.StandardDeviation();
 	}
 
+	/**
+	 * gets the standard deviation of the sample
+	 * 
+	 * @return the standard deviation of the sample
+	 */
 	public double StandardDeviation() {
 		if (this.sumOfSquares.GetUpdateNeeded()) {
 			this.UpdateSumOfSquares();
@@ -121,6 +152,11 @@ public class UnivariateSample {
 		return this.standardDeviation.GetValue();
 	}
 
+	/**
+	 * gets the sum of the sample
+	 * 
+	 * @return the sum of the sample
+	 */
 	public double Sum() {
 		if (this.sum.GetUpdateNeeded()) {
 			this.UpdateSum();
@@ -128,6 +164,11 @@ public class UnivariateSample {
 		return this.sum.GetValue();
 	}
 
+	/**
+	 * gets the sum of squares of the sample
+	 * 
+	 * @return the sum of squares of the sample
+	 */
 	public double SumOfSquares() {
 		if (this.sumOfSquares.GetUpdateNeeded()) {
 			this.UpdateSumOfSquares();
@@ -135,6 +176,11 @@ public class UnivariateSample {
 		return this.sumOfSquares.GetValue();
 	}
 
+	/**
+	 * gets the data of the sample
+	 * 
+	 * @return the data of the sample
+	 */
 	public ArrayList<Double> getData() {
 		return this.data;
 	}
