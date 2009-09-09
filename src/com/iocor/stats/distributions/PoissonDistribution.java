@@ -26,7 +26,8 @@ public class PoissonDistribution implements IDiscreteProbabilityDistribution {
 			this.lambda = Lambda;
 			this.instanceConstant = MathHelper.Exp(-this.lambda);
 		} else {
-			throw new IllegalArgumentException("lambda must be greater than zero");
+			throw new IllegalArgumentException(
+					"lambda must be greater than zero");
 		}
 	}
 
@@ -44,36 +45,40 @@ public class PoissonDistribution implements IDiscreteProbabilityDistribution {
 	 * * x must be greater than zero for this function
 	 */
 	public double PMF(int x) {
-		return this.instanceConstant * Math.pow(this.lambda, x) / MathHelper.Factorial(x);
+		return this.instanceConstant * Math.pow(this.lambda, x)
+				/ MathHelper.Factorial(x);
 	}
 
 	@Override
 	public double Mean() {
-		// TODO Auto-generated method stub
+		
 		return this.lambda;
 	}
 
 	@Override
 	public double Median() {
-		// TODO Auto-generated method stub
-		throw new NotImplementedException();
+		
+		return Math.floor(this.lambda + (1 / 3) + 0.02 / this.lambda);
 	}
 
 	@Override
 	public double Mode() {
-		// TODO Auto-generated method stub
-		throw new NotImplementedException();
+		double floorL = Math.floor(this.lambda);
+		if(this.lambda == floorL){
+			return this.lambda - 1;
+		}
+		return floorL;
 	}
 
 	@Override
 	public double StandardDeviation() {
-		// TODO Auto-generated method stub
+		
 		return MathHelper.SquareRoot(this.lambda);
 	}
 
 	@Override
 	public double Variance() {
-		// TODO Auto-generated method stub
+		
 		return this.lambda;
 	}
 
