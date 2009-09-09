@@ -76,8 +76,7 @@ public class MathHelper {
 			}
 			return mul;
 		} else {
-			throw new IllegalArgumentException(
-					"cannot calculate the factorial of a negative number");
+			throw new IllegalArgumentException("cannot calculate the factorial of a negative number");
 		}
 
 	}
@@ -111,18 +110,20 @@ public class MathHelper {
 	 * @return erf(z)
 	 */
 	public static double erf(double z) {
-		double sum = 0.0, prod = 1.0;
+		double sum = 0.0, prod;
 		int iterations = 100;
-
-		for(int n = 0; n < iterations; n++){
-			for(int k = 1; k <= n; k++){
-				prod *= (-1) * Square(z) / k;
+		double premultiplicationconstant = -Square(z);
+		for (int n = 0; n < iterations; n++) {
+			prod = premultiplicationconstant;
+			//isn't this just premulconstant^n/k!?
+			
+			for (int k = 2; k <= n; k++) {
+				prod *= premultiplicationconstant / k;
 			}
 			sum += (z / (2 * n + 1)) * prod;
-			prod = 1.0;
-			
+
 		}
-		
+
 		return sum;
 	}
 
