@@ -3,6 +3,7 @@ package com.iocor.stats.samples;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.iocor.stats.CachedValue;
 import com.iocor.stats.MathHelper;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
@@ -15,17 +16,24 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
  */
 public class UnivariateSample {
 	private ArrayList<Double> data;
-	private double sum;
-	private double mean;
-	private double standardDeviation;
-	private double sumOfSquares;
-	private boolean sumUpdateNeeded = false;
-	private boolean meanUpdateNeeded = false;
-	private boolean standardDeviationUpdateNeeded = false;
-	private boolean sumOfSquaresUpdateNeeded = false;
+	/*
+	 * private double sum; private double mean; private double
+	 * standardDeviation; private double sumOfSquares; private boolean
+	 * sumUpdateNeeded = false; private boolean meanUpdateNeeded = false;
+	 * private boolean standardDeviationUpdateNeeded = false; private boolean
+	 * sumOfSquaresUpdateNeeded = false;
+	 */
+	private CachedValue<Double> sum;
+	private CachedValue<Double> mean;
+	private CachedValue<Double> standardDeviation;
+	private CachedValue<Double> sumOfSquares;
 
 	public UnivariateSample() {
 		this.data = new ArrayList<Double>();
+		this.sum = new CachedValue<Double>(Double.NaN);
+		this.mean = new CachedValue<Double>(Double.NaN);
+		this.standardDeviation = new CachedValue<Double>(Double.NaN);
+		this.sumOfSquares = new CachedValue<Double>(Double.NaN);
 	}
 
 	public void AddItem(double value) {
@@ -34,10 +42,10 @@ public class UnivariateSample {
 	}
 
 	private void Reset() {
-		this.meanUpdateNeeded = true;
-		this.standardDeviationUpdateNeeded = true;
-		this.sumUpdateNeeded = true;
-		this.sumOfSquaresUpdateNeeded = true;
+		this.sum.SetOutDated();
+		this.mean.SetOutDated();
+		this.sumOfSquares.SetOutDated();
+		this.standardDeviation.SetOutDated();
 	}
 
 	private void UpdateSum() {
@@ -45,8 +53,7 @@ public class UnivariateSample {
 		for (int i = 0; i < this.data.size(); i++) {
 			sum += this.data.get(i);
 		}
-		this.sum = sum;
-		this.sumUpdateNeeded = false;
+		this.sum.SetValue(sum);
 	}
 
 	private void UpdateSumOfSquares() {
@@ -54,19 +61,17 @@ public class UnivariateSample {
 		for (int i = 0; i < this.data.size(); i++) {
 			sumsquares += MathHelper.Square(this.data.get(i));
 		}
-		this.sumOfSquares = sumsquares;
-		this.sumOfSquaresUpdateNeeded = false;
+		this.sumOfSquares.SetValue(sumsquares);
 	}
 
 	public double Mean() {
-		if (this.sumUpdateNeeded) {
+		if (this.sum.GetUpdateNeeded()) {
 			this.UpdateSum();
 		}
-		if (this.meanUpdateNeeded) {
-			this.mean = this.sum / this.data.size();
-			this.meanUpdateNeeded = false;
+		if (this.mean.GetUpdateNeeded()) {
+			this.mean.SetValue(this.sum.GetValue() / this.data.size());
 		}
-		return this.mean;
+		return this.mean.GetValue();
 	}
 
 	public double Median() {
@@ -106,29 +111,28 @@ public class UnivariateSample {
 	}
 
 	public double StandardDeviation() {
-		if (this.sumOfSquaresUpdateNeeded) {
+		if (this.sumOfSquares.GetUpdateNeeded()) {
 			this.UpdateSumOfSquares();
 		}
-		if (this.standardDeviationUpdateNeeded) {
-			this.standardDeviation = (this.sumOfSquares - (this.data.size() * MathHelper.Square(this.Mean()))) / (this.data.size() - 1);
-			this.standardDeviation = MathHelper.SquareRoot(this.standardDeviation);
-			this.standardDeviationUpdateNeeded = false;
+		if (this.standardDeviation.GetUpdateNeeded()) {
+			this.standardDeviation.SetValue((this.sumOfSquares.GetValue() - (this.data.size() * MathHelper.Square(this.Mean()))) / (this.data.size() - 1));
+			this.standardDeviation.SetValue(MathHelper.SquareRoot(this.standardDeviation.GetValue()));
 		}
-		return this.standardDeviation;
+		return this.standardDeviation.GetValue();
 	}
 
 	public double Sum() {
-		if (this.sumUpdateNeeded) {
+		if (this.sum.GetUpdateNeeded()) {
 			this.UpdateSum();
 		}
-		return this.sum;
+		return this.sum.GetValue();
 	}
 
 	public double SumOfSquares() {
-		if (this.sumOfSquaresUpdateNeeded) {
+		if (this.sumOfSquares.GetUpdateNeeded()) {
 			this.UpdateSumOfSquares();
 		}
-		return this.sumOfSquares;
+		return this.sumOfSquares.GetValue();
 	}
 
 	public ArrayList<Double> getData() {
