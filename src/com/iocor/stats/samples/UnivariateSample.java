@@ -146,8 +146,12 @@ public class UnivariateSample {
 			this.UpdateSumOfSquares();
 		}
 		if (this.standardDeviation.GetUpdateNeeded()) {
-			this.standardDeviation.SetValue((this.sumOfSquares.GetValue() - (this.data.size() * MathHelper.Square(this.Mean()))) / (this.data.size() - 1));
-			this.standardDeviation.SetValue(MathHelper.SquareRoot(this.standardDeviation.GetValue()));
+			this.standardDeviation
+					.SetValue((this.sumOfSquares.GetValue() - (this.data.size() * MathHelper
+							.Square(this.Mean())))
+							/ (this.data.size() - 1));
+			this.standardDeviation.SetValue(MathHelper
+					.SquareRoot(this.standardDeviation.GetValue()));
 		}
 		return this.standardDeviation.GetValue();
 	}
@@ -184,4 +188,17 @@ public class UnivariateSample {
 	public ArrayList<Double> getData() {
 		return this.data;
 	}
+
+	public int Frequency(double v) {
+		int f = 0;
+
+		for (Double d : this.data) {
+			if (d.equals(v)) {
+				f++;
+			}
+		}
+
+		return f;
+	}
+
 }

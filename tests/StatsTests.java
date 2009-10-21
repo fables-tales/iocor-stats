@@ -10,6 +10,7 @@ public class StatsTests {
 		suite.addTestSuite(PoissonTests.class);
 		suite.addTestSuite(UnivariateSampleTest.class);
 		suite.addTestSuite(BinomialDistributionTests.class);
+		suite.addTestSuite(ChiSquaredTestTest.class);
 		// $JUnit-END$
 		return suite;
 	}
