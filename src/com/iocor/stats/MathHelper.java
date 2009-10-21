@@ -76,7 +76,8 @@ public class MathHelper {
 			}
 			return mul;
 		} else {
-			throw new IllegalArgumentException("cannot calculate the factorial of a negative number");
+			throw new IllegalArgumentException(
+					"cannot calculate the factorial of a negative number");
 		}
 
 	}
@@ -115,8 +116,8 @@ public class MathHelper {
 		double premultiplicationconstant = -Square(z);
 		for (int n = 0; n < iterations; n++) {
 			prod = premultiplicationconstant;
-			//isn't this just premulconstant^n/k!?
-			
+			// isn't this just premulconstant^n/k!?
+
 			for (int k = 2; k <= n; k++) {
 				prod *= premultiplicationconstant / k;
 			}
@@ -126,5 +127,36 @@ public class MathHelper {
 
 		return sum;
 	}
-
+	
+	public static double Gamma(double z){
+		double total = 0.0;
+		double step = (10*z)/1000;
+		double t = 0;
+		double r = z - 1;
+		double last = Math.pow(t,r);
+		
+		for (t = step; t < 10*z; t += step){
+			double next = Math.pow(t,r)*Exp(-t);
+			total += TrapeziumArea(step, last, next);
+			last = next;
+		}
+		
+		return total;
+	}
+	
+	public static double LowerIncompleteGamma(double x, double s){
+		double total = 0.0;
+		double t = 0;
+		double last = 0;
+		double step = x/1000;
+		double r = x - 1;
+		
+		for (t = 0; t < x; t += step){
+			double next = Math.pow(t,r)*Exp(-t);
+			total += next;
+			last = next;
+		}
+		
+		return total;
+	}
 }
